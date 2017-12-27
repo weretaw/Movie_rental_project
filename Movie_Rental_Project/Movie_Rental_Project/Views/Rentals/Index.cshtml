@@ -1,0 +1,32 @@
+﻿@using Movie_Rental_Project.Models;
+@model IEnumerable<Rentals>
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+
+    <link href="~/Content/ReantalStyle.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <h2 class="h2heder">Rental</h2>
+
+    <table class="table">
+        <tr class="trhover">
+            <th>User name</th>
+            <th>Movie Name</th>
+            <th>Category</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="trhover">
+                <td>@item.UserName</td>
+                <td>@item.MovieName</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+
+    </table>
+</body>

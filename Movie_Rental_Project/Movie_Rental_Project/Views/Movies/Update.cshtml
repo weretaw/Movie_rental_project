@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Movie</h2>
+
+<form action="/Movies/Update" onsubmit="return validation()" method="post">
+    <span>Movie Id</span> <input type="text" id="movieId" readonly title="You can`t change ID!" name="MovieId" value="@ViewBag.ID" />
+    <br /><br />
+    <span>Change Movie Name</span> <input type="text" id="nameId" name="MovieName" value="@ViewBag.MovieName" /><br />
+    <p id="PNameId" style="color:red"></p>
+
+    <span>Change Category</span> <select value="@ViewBag.Category" name="MovieCategory" id="CategoryId">
+        <option>@ViewBag.Category</option>
+        <option>Comedy</option>
+        <option>Fantasy</option>
+        <option>Action</option>
+        <option>Animation</option>
+        <option>Horror</option>
+    </select>
+    <input id="submitId" type="submit" value="Save Movie" />
+</form>
+
+<script>
+    function validation()
+    {
+        var name = $('#nameId').val();
+
+        if (name == "")
+        {
+            $('#PNameId').html("please enter movie name!")
+            return false;
+        }
+    }
+</script>
+

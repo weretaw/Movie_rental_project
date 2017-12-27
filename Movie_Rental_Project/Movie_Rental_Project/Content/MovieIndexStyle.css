@@ -1,0 +1,19 @@
+﻿.trhover:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.Button {
+    background-color:#e9f6f6;
+    border: none;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.h2heder{
+    text-align:center
+}

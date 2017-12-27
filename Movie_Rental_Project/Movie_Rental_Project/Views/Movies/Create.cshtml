@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create new movie</h2>
+
+<form class="form-horizontal" action="/Movies/Create" method="post">
+    <span>Movie Name:  <input type="text" id="movieNameId" required name="_MovieName" /></span><br /><br />
+    <p id="PmovieNameId" style="color:red;"></p>
+    <span>Movie Category:</span>
+    <select typeof="text" name="_Category">
+        <option>Comedy</option>
+        <option>Fantasy</option>
+        <option>Action</option>
+        <option>Animation</option>
+        <option>Horror</option>
+    </select>
+    <button onclick="FormVlaidtion()">Add movie</button>
+</form>
+<script>
+    function FormVlaidtion() {
+        var movieName = document.getElementById('movieNameId').value;
+        var pname = document.getElementById('PmovieNameId');
+        if (movieName == "")
+        {
+            pname.innerHTML="Please enter movie name!"
+        }
+    }
+</script>
+
