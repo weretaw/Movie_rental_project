@@ -1,7 +1,13 @@
 ﻿.trhover:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(78, 83, 32, 0.70);
 }
 
 .h2heder {
     text-align: center
+}
+
+.tbrntdiv{
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0.7);
 }

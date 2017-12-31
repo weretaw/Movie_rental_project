@@ -2,30 +2,58 @@
 @{
     ViewBag.Title = "Create";
 }
+<head>
+    <title>Create</title>
+    <link href="~/Content/CreatMovieStyle.css" rel="stylesheet" />
+</head>
 
-<h2>Create new movie</h2>
+<body>
+    <h2 class="header">Create new movie</h2>
+    <div class="divcntr">        
+            <span>Movie Name:  <input type="text" id="movieNameId" placeholder="Enter movie name" required name="_MovieName" /></span><br /><br />
+            <p id="PmovieNameId" style="color:red;"></p>
+            <span>Movie Category:</span>
+            <select title="Choise Category" typeof="text" id="categoryId" name="_Category">
+                <option>Choise Category</option>
+                <option>Comedy</option>
+                <option>Fantasty</option>
+                <option>Action</option>
+                <option>Animation</option>
+                <option>Horror</option>
+            </select>
+        <p id="PcategoryId" style="color:red;"></p>
+        <br /><br />
+            <button class="Butn" title="Click to save movie" onclick="addMovie()">Add movie</button><br /><br />
+        <span class="alert-success Spanmsg" id="responseId"></span>
+    </div>
+    <script>
+        function addMovie() {
+            var movieName = document.getElementById('movieNameId').value;
+            var pName = document.getElementById('PmovieNameId');
 
-<form class="form-horizontal" action="/Movies/Create" method="post">
-    <span>Movie Name:  <input type="text" id="movieNameId" required name="_MovieName" /></span><br /><br />
-    <p id="PmovieNameId" style="color:red;"></p>
-    <span>Movie Category:</span>
-    <select typeof="text" name="_Category">
-        <option>Comedy</option>
-        <option>Fantasy</option>
-        <option>Action</option>
-        <option>Animation</option>
-        <option>Horror</option>
-    </select>
-    <button onclick="FormVlaidtion()">Add movie</button>
-</form>
-<script>
-    function FormVlaidtion() {
-        var movieName = document.getElementById('movieNameId').value;
-        var pname = document.getElementById('PmovieNameId');
-        if (movieName == "")
-        {
-            pname.innerHTML="Please enter movie name!"
+            if (movieName == "") {
+                pName.innerHTML = "Please enter movie name!"
+            }
+
+            var category = document.getElementById('categoryId').value;
+            var pCategory = document.getElementById('PcategoryId');
+
+            if (category == "Choise Category") {
+                pCategory.innerHTML = "Please choise movie category!"
+            }
+
+            var MovieName = document.getElementById('movieNameId');
+            var Category = document.getElementById('categoryId');
+            var xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var jsonObj = JSON.parse(this.responseText);
+                    document.getElementById('responseId').innerHTML = jsonObj.response
+                };
+
+            };
+            xhttp.open('POST', "/Movies/Create?MovieName=" + MovieName.value + "&" + "Category=" + Category.value);
+            xhttp.send();
         }
-    }
-</script>
-
+    </script>
+</body>

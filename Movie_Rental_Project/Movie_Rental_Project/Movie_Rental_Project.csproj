@@ -218,6 +218,8 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CreatMovieStyle.css" />
+    <Content Include="Content\LayoutStyle.css" />
     <Content Include="Content\MovieIndexStyle.css" />
     <Content Include="Content\ReantalStyle.css" />
     <Content Include="favicon.ico" />
@@ -278,7 +280,9 @@
     <Content Include="Views\Movies\Create.cshtml" />
     <Content Include="Views\Movies\Update.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

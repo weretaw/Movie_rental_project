@@ -2,5 +2,13 @@
     text-align: center;
     color: #eef4f5;
     font-family:Courier New, Courier, monospace;
-    font-size:xx-large;
+    font-size:50px;  
+}
+
+.divcntr {
+    width: auto;
+    height: auto;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    padding: 25px 25px;
 }

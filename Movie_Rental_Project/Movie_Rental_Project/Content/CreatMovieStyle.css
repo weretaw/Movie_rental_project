@@ -1,0 +1,33 @@
+﻿.header {
+    text-align: center;
+    color: #eef4f5;
+    font-family: Courier New, Courier, monospace;
+    font-size:50px;  
+}
+
+.divcntr {
+    width: auto;
+    height: auto;
+    margin-top: 135px;
+    margin-bottom: 135px;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding: 25px 25px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.Spanmsg{
+    width:auto;
+    height:25px;
+    padding-top:5px; 
+    padding-bottom:5px;
+}
+
+.Butn{
+    height:30px;
+    margin-left:300px;
+    background-color:#3d422d;
+    border:hidden;
+    border-radius:5px;
+    color:#ff0000;
+}

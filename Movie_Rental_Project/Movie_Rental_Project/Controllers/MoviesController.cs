@@ -34,11 +34,19 @@ namespace Movie_Rental_Project.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Create(string MovieName, string Category)
         {
-            reuseMovieFunction.createMovie(MovieName, Category);
-            return RedirectToAction("Index");
+            if(!string.IsNullOrEmpty(MovieName) && !string.IsNullOrEmpty(Category)&& Category!= "Choise Category")
+            {
+               bool IsSuccess = reuseMovieFunction.createMovie(MovieName, Category);
+
+                var obj = new { response = "You added a movie successfully!" };
+                return Json(obj,
+                JsonRequestBehavior.AllowGet);
+            }
+
+            return View();
         }
 
-        //Update movie
+        //Update get movie to edit
         [HttpGet]
         [Authorize(Roles = "admin")]
         public ActionResult Update(int Id)
@@ -67,5 +75,12 @@ namespace Movie_Rental_Project.Controllers
             return RedirectToAction("Index");
         }
 
+        //Return movie
+        [Authorize]
+        public ActionResult ReturnMovie(int ID)
+        {
+            reuseMovieFunction.returnMovieToMovieTB(ID);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Movie_Rental_Project.Logic
     {
         ApplicationDbContext m_db = new ApplicationDbContext();
 
+        //rent new movie methode
         public void rentNewMovie(Movies getMovie, IIdentity user)
         {
             Rentals rentmovie = new Rentals
