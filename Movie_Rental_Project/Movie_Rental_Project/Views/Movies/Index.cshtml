@@ -6,6 +6,8 @@
 <head>
 
     <link href="~/Content/MovieIndexStyle.css" rel="stylesheet" />
+ 
+
 </head>
 
 <body>
@@ -13,32 +15,43 @@
 
     <a class="Button" title="Click to add new movie" href="/Movies/Create">Add Movie</a>
     <div class="tbdiv">
-        <table class="table">
-            <tr class="trhover">
-                <th>Movie Name</th>
-                <th>Category</th>
-                <th>Rent</th>
-                @if (User.Identity.Name == "w.tchekol@gmail.com"|| User.Identity.Name == "ramra@qualitest.co.il")
-                {
-                    <th>Update</th>
-                    <th>Delete</th>
-                }
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <table id="datatable" class="table">
+            <thead>
                 <tr class="trhover">
-                    <td>@item.MovieName</td>
-                    <td>@item.Category</td>
-                    <td><a title="Click to rent '@item.MovieName' movie" href="/Rentals/ReantMovie?ID=@item.ID">Rent</a></td>
+                    <th>Movie Name</th>
+                    <th>Category</th>
+                    <th>Rent</th>
                     @if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
                     {
-                        <td><a title="Click to edit '@item.MovieName' movie" href="/Movies/Update?ID=@item.ID">Edit</a></td>
-                        <td><a title="Click to delete '@item.MovieName' movie" href="/Movies/Delete?ID=@item.ID">Delete</a></td>
+                        <th>Update</th>
+                        <th>Delete</th>
                     }
-
                 </tr>
-            }
+            </thead>
+            
+                @foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr class="trhover">
+                            <td>@item.MovieName</td>
+                            <td>@item.Category</td>
+                            <td><a title="Click to rent '@item.MovieName' movie" href="/Rentals/ReantMovie?ID=@item.ID">Rent</a></td>
+                            @if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
+                            {
+                                <td><a title="Click to edit '@item.MovieName' movie" href="/Movies/Update?ID=@item.ID">Edit</a></td>
+                                <td><a title="Click to delete '@item.MovieName' movie" href="/Movies/Delete?ID=@item.ID">Delete</a></td>
+                            }
+
+                        </tr>
+                    </tbody>
+                }
+                   
         </table>
     </div>
+    <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#datatable').DataTable();
+            });
+    </script>
 </body>
