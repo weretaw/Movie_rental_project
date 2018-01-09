@@ -5,42 +5,53 @@
 }
 <head>
     <link href="~/Content/ReantalStyle.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/css/jquery.dataTables.css" rel="stylesheet" />
 </head>
 
 <body>
 
     <h2 class="h2heder">Rental</h2>
     <div class="tbrntdiv">
-    <table class="table">
-        <tr class="trhover">
-            <th>User name</th>
-            <th>Movie Name</th>
-            <th>Category</th>
-            <th>Return Movie</th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <table class="cell-border" id="dataTable">
+        <thead>
             <tr class="trhover">
-               @if (User.Identity.Name == item.UserName)
-                {
-                <td>@item.UserName</td>
-                <td>@item.MovieName</td>
-                <td>@item.Category</td>
-              
-                    <td><a title="Return '@item.MovieName' to movies" href="/Movies/ReturnMovie?ID=@item.ID">Return movie</a></td>
-               }
-               else if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
-               {
-                    <td>@item.UserName</td>
-                    <td>@item.MovieName</td>
-                    <td>@item.Category</td>
-
-                    <td><a title="Return '@item.MovieName' to movies" href="/Movies/ReturnMovie?ID=@item.ID">Return movie</a></td>
-               }
+                <th>User name</th>
+                <th>Movie Name</th>
+                <th>Category</th>
+                <th>Return Movie</th>
             </tr>
-        }
+        </thead>
+        <tbody class="cltbody">
+            @foreach (var item in Model)
+            {
+                <tr class="trhover">
+                    @if (User.Identity.Name == item.UserName)
+                {
+                        <td>@item.UserName</td>
+                        <td>@item.MovieName</td>
+                        <td>@item.Category</td>
 
+                        <td><a title="Return '@item.MovieName' to movies" href="/Movies/ReturnMovie?ID=@item.ID">Return movie</a></td>
+                    }
+                    else if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
+                    {
+                        <td>@item.UserName</td>
+                        <td>@item.MovieName</td>
+                        <td>@item.Category</td>
+
+                        <td><a title="Return '@item.MovieName' to movies" href="/Movies/ReturnMovie?ID=@item.ID">Return movie</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
     </table>
         </div>
+    @section scripts {
+    <script src="~/Scripts/DataTable/jquery.dataTables.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#dataTable').DataTable();
+            });
+        </script>
+    }
 </body>

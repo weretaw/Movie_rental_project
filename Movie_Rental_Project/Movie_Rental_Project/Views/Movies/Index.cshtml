@@ -4,10 +4,8 @@
     ViewBag.Title = "Index";
 }
 <head>
-
     <link href="~/Content/MovieIndexStyle.css" rel="stylesheet" />
- 
-
+    <link href="~/Content/DataTable/css/jquery.dataTables.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -15,7 +13,7 @@
 
     <a class="Button" title="Click to add new movie" href="/Movies/Create">Add Movie</a>
     <div class="tbdiv">
-        <table id="datatable" class="table">
+        <table class="cell-border" id="dataTable">
             <thead>
                 <tr class="trhover">
                     <th>Movie Name</th>
@@ -28,30 +26,31 @@
                     }
                 </tr>
             </thead>
-            
+            <tbody class="cltbody">
                 @foreach (var item in Model)
-                {
-                    <tbody>
-                        <tr class="trhover">
-                            <td>@item.MovieName</td>
-                            <td>@item.Category</td>
-                            <td><a title="Click to rent '@item.MovieName' movie" href="/Rentals/ReantMovie?ID=@item.ID">Rent</a></td>
-                            @if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
-                            {
-                                <td><a title="Click to edit '@item.MovieName' movie" href="/Movies/Update?ID=@item.ID">Edit</a></td>
-                                <td><a title="Click to delete '@item.MovieName' movie" href="/Movies/Delete?ID=@item.ID">Delete</a></td>
-                            }
-
-                        </tr>
-                    </tbody>
+            {
+                    <tr class="trhover tdcolor">
+                        <td>@item.MovieName</td>
+                        <td>@item.Category</td>
+                        <td><a title="Click to rent '@item.MovieName' movie" href="/Rentals/ReantMovie?ID=@item.ID">Rent</a></td>
+                        @if (User.Identity.Name == "w.tchekol@gmail.com" || User.Identity.Name == "ramra@qualitest.co.il")
+                        {
+                            <td><a title="Click to edit '@item.MovieName' movie" href="/Movies/Update?ID=@item.ID">Edit</a></td>
+                            <td><a title="Click to delete '@item.MovieName' movie" href="/Movies/Delete?ID=@item.ID">Delete</a></td>
+                        }
+                    </tr>
                 }
-                   
+            </tbody>
         </table>
-    </div>
+    </div>   
+    @section scripts {
+    <script src="~/Scripts/DataTable/jquery.dataTables.js"></script>
     <script type="text/javascript">
-
-            $(document).ready(function () {
-                $('#datatable').DataTable();
-            });
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
     </script>
+
+        }
+
 </body>
